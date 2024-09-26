@@ -1,5 +1,5 @@
 ﻿using Contacts.Domain.ValueObjects;
-using System.ComponentModel.DataAnnotations;
+using Contacts.Domain.Exceptions;
 using System.Text;
 
 namespace Contacts.Domain.Entities

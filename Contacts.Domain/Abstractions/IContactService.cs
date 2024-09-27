@@ -9,6 +9,5 @@ namespace Contacts.Domain.Abstractions
         public Task<IEnumerable<Contact>> GetAllContactsAsync();
         public Task<int> UpdateContactAsync(int id, Contact contact);
         public Task<int> DeleteContactAsync(int id);
-
     }
 }

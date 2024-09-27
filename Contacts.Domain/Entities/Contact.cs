@@ -17,6 +17,10 @@ namespace Contacts.Domain.Entities
         public Contact(int id, string firstName, string lastName, PhoneNumber phoneNumber, Email? email, Image? image)
         {
             StringBuilder validationErrors = new StringBuilder();
+
+            if (id < 1)
+                validationErrors.Append($"{nameof(Id)} can't be non-positive integer");
+
             if (string.IsNullOrWhiteSpace(firstName))
                 validationErrors.Append($"{nameof(FirstName)} can't be null or white-spaced string");
             if (firstName.Length > firstNameMaxLength)
@@ -36,8 +40,8 @@ namespace Contacts.Domain.Entities
             Id = id;
             FirstName = firstName;
             LastName = lastName;
-            Email = email;
             PhoneNumber = phoneNumber!;
+            Email = email;            
             Image = image;
         }
     }

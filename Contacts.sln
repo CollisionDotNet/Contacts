@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Domain", "Contacts
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Application", "Contacts.Application\Contacts.Application.csproj", "{FA506C93-5C1A-4CF0-9813-7D601A858512}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Infrastructure", "Contacts.Infrastructure\Contacts.Infrastructure.csproj", "{0BA745D0-B75E-42D2-A203-75629FBC7509}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FA506C93-5C1A-4CF0-9813-7D601A858512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA506C93-5C1A-4CF0-9813-7D601A858512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA506C93-5C1A-4CF0-9813-7D601A858512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA745D0-B75E-42D2-A203-75629FBC7509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA745D0-B75E-42D2-A203-75629FBC7509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA745D0-B75E-42D2-A203-75629FBC7509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA745D0-B75E-42D2-A203-75629FBC7509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

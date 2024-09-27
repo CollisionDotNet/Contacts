@@ -18,14 +18,14 @@
             .Select(component => component != null ? component.GetHashCode() : 0)
             .Aggregate((aggregated, newhashcode) => HashCode.Combine(aggregated, newhashcode));
     }
-    public static bool operator ==(ValueObject left, ValueObject right)
+    public static bool operator ==(ValueObject? left, ValueObject? right)
     {
         if(left is null || right is null)
             return false;
         return ReferenceEquals(left, right) || left.Equals(right);
     }
 
-    public static bool operator !=(ValueObject left, ValueObject right)
+    public static bool operator !=(ValueObject? left, ValueObject? right)
     {
         return !(left == right);
     }

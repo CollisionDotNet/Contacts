@@ -1,13 +1,12 @@
-﻿using Contacts.Domain.ValueObjects;
+﻿using Contacts.Domain.BaseTypes;
+using Contacts.Domain.ValueObjects;
 using Contacts.Domain.Exceptions;
 using System.Text;
 
 namespace Contacts.Domain.Entities
 {
-    public class Contact
+    public class Contact : IEntity
     {
-        public const int firstNameMaxLength = 50;
-        public const int lastNameMaxLength = 50;
         public int Id { get; }
         public string FirstName { get; }
         public string LastName { get; }
@@ -23,13 +22,9 @@ namespace Contacts.Domain.Entities
 
             if (string.IsNullOrWhiteSpace(firstName))
                 validationErrors.Append($"{nameof(FirstName)} can't be null or white-spaced string");
-            if (firstName.Length > firstNameMaxLength)
-                validationErrors.Append($"{nameof(FirstName)} can't be longer than {firstNameMaxLength}");
 
             if (string.IsNullOrWhiteSpace(lastName))
                 validationErrors.Append($"{nameof(LastName)} can't be null or white-spaced string");
-            if (lastName.Length > lastNameMaxLength)
-                validationErrors.Append($"{nameof(LastName)} can't be longer than {lastNameMaxLength}");
 
             if (phoneNumber == null)
                 validationErrors.Append($"{nameof(PhoneNumber)} can't be null");

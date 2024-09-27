@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Contacts.Domain.ValueObjects
 {
-    public class PhoneNumber : ValueObject
+    public partial class PhoneNumber : ValueObject
     {
         public const string numberRegex = @"^\+?[1-9][0-9]{7,14}$";
         public string Number { get; }
@@ -13,7 +13,7 @@ namespace Contacts.Domain.ValueObjects
             StringBuilder validationErrors = new StringBuilder();
             if (string.IsNullOrWhiteSpace(number))
                 validationErrors.Append($"{nameof(Number)} can't be null or white-spaced string");
-            if (!Regex.IsMatch(number, numberRegex))
+            if (!PhoneNumberRegex().IsMatch(number))
                 validationErrors.Append($"String \"{number}\" doesn't match the phone number template");
 
             if (validationErrors.Length > 0)
@@ -25,5 +25,8 @@ namespace Contacts.Domain.ValueObjects
         {
             yield return Number;
         }
+
+        [GeneratedRegex(numberRegex)]
+        private static partial Regex PhoneNumberRegex();
     }
 }

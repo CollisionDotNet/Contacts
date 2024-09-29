@@ -14,8 +14,10 @@ namespace Contacts.API
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
             builder.Services.AddScoped<IContactService, ContactService>();
             builder.Services.AddScoped<IContactRepository, EFContactRepository>();
+
             string? contactsDBConnectionString = builder.Configuration.GetConnectionString(nameof(ContactsDbContext));
             builder.Services.AddDbContext<ContactsDbContext>(options =>
             {

@@ -4,10 +4,10 @@ namespace Contacts.Domain.Abstractions
 {
     public interface IContactService
     {
-        public Task<int> CreateContactAsync(Contact contact);
-        public Task<Contact?> GetContactAsync(int id);
+        public Task<Guid> CreateContactAsync(Contact contact);
+        public Task<Contact?> GetContactAsync(Guid id);
         public Task<IEnumerable<Contact>> GetAllContactsAsync();
-        public Task<int> UpdateContactAsync(Contact contact);
-        public Task<int> DeleteContactAsync(int id);
+        public Task<Guid> UpdateContactAsync(Contact contact);
+        public Task<Guid> DeleteContactAsync(Guid id);
     }
 }

@@ -10,11 +10,11 @@ namespace Contacts.Application.Services
         {
             _contactRepository = contactRepository;
         }
-        public async Task<int> CreateContactAsync(Contact contact)
+        public async Task<Guid> CreateContactAsync(Contact contact)
         {
             return await _contactRepository.CreateAsync(contact);
         }
-        public async Task<Contact?> GetContactAsync(int id)
+        public async Task<Contact?> GetContactAsync(Guid id)
         {
             return await _contactRepository.GetAsync(id);
         }
@@ -22,11 +22,11 @@ namespace Contacts.Application.Services
         {
             return await _contactRepository.GetAllAsync();
         }
-        public async Task<int> UpdateContactAsync(Contact contact)
+        public async Task<Guid> UpdateContactAsync(Contact contact)
         {
             return await _contactRepository.UpdateAsync(contact);
         }
-        public async Task<int> DeleteContactAsync(int id)
+        public async Task<Guid> DeleteContactAsync(Guid id)
         {
             return await _contactRepository.DeleteAsync(id);
         }                 

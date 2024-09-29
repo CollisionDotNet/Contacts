@@ -7,18 +7,15 @@ namespace Contacts.Domain.Entities
 {
     public class Contact : IEntity
     {
-        public int Id { get; }
+        public Guid Id { get; }
         public string FirstName { get; }
         public string LastName { get; }
         public PhoneNumber PhoneNumber { get; }
         public Email? Email { get; }       
         public Image? Image { get; }
-        public Contact(int id, string firstName, string lastName, PhoneNumber phoneNumber, Email? email, Image? image)
+        public Contact(Guid id, string firstName, string lastName, PhoneNumber phoneNumber, Email? email, Image? image)
         {
             StringBuilder validationErrors = new StringBuilder();
-
-            if (id < 1)
-                validationErrors.Append($"{nameof(Id)} can't be non-positive integer");
 
             if (string.IsNullOrWhiteSpace(firstName))
                 validationErrors.Append($"{nameof(FirstName)} can't be null or white-spaced string");

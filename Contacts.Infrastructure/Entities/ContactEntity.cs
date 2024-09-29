@@ -5,13 +5,13 @@
         public const int firstNameMaxLength = 50;
         public const int lastNameMaxLength = 50;
         public const int emailMaxLength = 50;
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string? Email { get; set; }       
         public string? ImageUri { get; set; }
-        public ContactEntity(int id, string firstName, string lastName, string phoneNumber, string? email, string? imageUri)
+        public ContactEntity(Guid id, string firstName, string lastName, string phoneNumber, string? emailAddress, string? imageUri)
         {
             Id = id;
             FirstName = firstName;

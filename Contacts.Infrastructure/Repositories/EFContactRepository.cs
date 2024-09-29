@@ -15,14 +15,14 @@ namespace Contacts.Infrastructure.Repositories
             _context = context; 
             _mapper = mapper;
         }
-        public async Task<int> CreateAsync(Contact contact)
+        public async Task<Guid> CreateAsync(Contact contact)
         {
             ContactEntity toAdd = _mapper.ToInfrastructureEntity(contact);
             await _context.Contacts.AddAsync(toAdd);
             await _context.SaveChangesAsync();
             return toAdd.Id;
         }
-        public async Task<Contact?> GetAsync(int id)
+        public async Task<Contact?> GetAsync(Guid id)
         {
             ContactEntity? contact = await _context.Contacts.FindAsync(id);
             if (contact == null)
@@ -39,13 +39,14 @@ namespace Contacts.Infrastructure.Repositories
             IEnumerable<ContactEntity> contacts = await _context.Contacts.AsNoTracking().ToListAsync();
             return contacts.Select(_mapper.ToDomainEntity);
         }
-        public async Task<int> UpdateAsync(Contact contact)
+        public async Task<Guid> UpdateAsync(Contact contact)
         {
             ContactEntity toUpdate = _mapper.ToInfrastructureEntity(contact);
             _context.Contacts.Update(toUpdate);
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return toUpdate.Id;
         }
-        public async Task<int> DeleteAsync(int id)
+        public async Task<Guid> DeleteAsync(Guid id)
         {
             await _context.Contacts.Where(c => c.Id == id).ExecuteDeleteAsync();
             return id;

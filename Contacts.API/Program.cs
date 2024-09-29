@@ -1,6 +1,9 @@
 using Contacts.Application.Services;
 using Contacts.Domain.Abstractions;
+using Contacts.Domain.Entities;
 using Contacts.Infrastructure;
+using Contacts.Infrastructure.Entities;
+using Contacts.Infrastructure.Mappers;
 using Contacts.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 namespace Contacts.API
@@ -17,8 +20,9 @@ namespace Contacts.API
 
             builder.Services.AddScoped<IContactService, ContactService>();
             builder.Services.AddScoped<IContactRepository, EFContactRepository>();
+            builder.Services.AddScoped<IMapper<Contact, ContactEntity>, ContactEntityMapper>();
 
-            string? contactsDBConnectionString = builder.Configuration.GetConnectionString(nameof(ContactsDbContext));
+            string ? contactsDBConnectionString = builder.Configuration.GetConnectionString(nameof(ContactsDbContext));
             builder.Services.AddDbContext<ContactsDbContext>(options =>
             {
                 options.UseSqlServer(contactsDBConnectionString);

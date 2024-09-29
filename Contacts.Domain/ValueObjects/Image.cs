@@ -1,6 +1,6 @@
 ﻿using Contacts.Domain.Exceptions;
 using System.Text;
-using System.Text.RegularExpressions;
+using Contacts.Domain.BaseTypes;
 
 namespace Contacts.Domain.ValueObjects
 {

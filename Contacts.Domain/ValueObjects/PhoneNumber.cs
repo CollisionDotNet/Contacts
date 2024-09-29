@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
+using Contacts.Domain.BaseTypes;
 
 namespace Contacts.Domain.ValueObjects
 {

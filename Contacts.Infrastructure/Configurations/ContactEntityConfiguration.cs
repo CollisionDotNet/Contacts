@@ -32,13 +32,13 @@ namespace Contacts.Infrastructure.Configurations
                 .IsUnique();
 
             builder
-                .Property(c => c.Email)
+                .Property(c => c.EmailAddress)
                 .IsRequired();
             builder
-                .HasIndex(c => c.Email)
+                .HasIndex(c => c.EmailAddress)
                 .IsUnique();
             builder
-                .Property(c => c.Email)
+                .Property(c => c.EmailAddress)
                 .HasMaxLength(ContactEntity.emailMaxLength);                          
         }
     }

@@ -1,8 +1,10 @@
-﻿namespace Contacts.Infrastructure.Mappers
+﻿using Contacts.Domain.Abstractions;
+
+namespace Contacts.Infrastructure.Mappers
 {
-    public class ContactMapper : IMapper<Domain.Entities.Contact, Infrastructure.Entities.ContactEntity>
+    public class ContactEntityMapper : IMapper<Domain.Entities.Contact, Infrastructure.Entities.ContactEntity>
     {
-        public Domain.Entities.Contact ToDomainEntity(Infrastructure.Entities.ContactEntity entity)
+        public Domain.Entities.Contact Map(Infrastructure.Entities.ContactEntity entity)
         {
             return new Domain.Entities.Contact
                 (
@@ -10,11 +12,11 @@
                     entity.FirstName,
                     entity.LastName,
                     new Domain.ValueObjects.PhoneNumber(entity.PhoneNumber),
-                    entity.Email == null ? null : new Domain.ValueObjects.Email(entity.Email),
+                    entity.EmailAddress == null ? null : new Domain.ValueObjects.Email(entity.EmailAddress),
                     entity.ImageUri == null ? null : new Domain.ValueObjects.Image(new Uri(entity.ImageUri))
                 );
         }
-        public Infrastructure.Entities.ContactEntity ToInfrastructureEntity(Domain.Entities.Contact entity)
+        public Infrastructure.Entities.ContactEntity Map(Domain.Entities.Contact entity)
         {
             return new Infrastructure.Entities.ContactEntity
                 (

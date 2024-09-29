@@ -17,7 +17,7 @@ namespace Contacts.Infrastructure.Repositories
         }
         public async Task<Guid> CreateAsync(Contact contact)
         {
-            ContactEntity toAdd = _mapper.ToInfrastructureEntity(contact);
+            ContactEntity toAdd = _mapper.Map(contact);
             await _context.Contacts.AddAsync(toAdd);
             await _context.SaveChangesAsync();
             return toAdd.Id;
@@ -31,17 +31,16 @@ namespace Contacts.Infrastructure.Repositories
             }
             else
             {
-                return _mapper.ToDomainEntity(contact);
+                return _mapper.Map(contact);
             }
         }
         public async Task<IEnumerable<Contact>> GetAllAsync()
-        {
-            IEnumerable<ContactEntity> contacts = await _context.Contacts.AsNoTracking().ToListAsync();
-            return contacts.Select(_mapper.ToDomainEntity);
+        {            
+            return await _context.Contacts.AsNoTracking().Select(c => _mapper.Map(c)).ToListAsync();
         }
         public async Task<Guid> UpdateAsync(Contact contact)
         {
-            ContactEntity toUpdate = _mapper.ToInfrastructureEntity(contact);
+            ContactEntity toUpdate = _mapper.Map(contact);
             _context.Contacts.Update(toUpdate);
             await _context.SaveChangesAsync();
             return toUpdate.Id;

@@ -1,5 +1,6 @@
-﻿using Contacts.Infrastructure.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Contacts.Infrastructure.Configurations;
+using Contacts.Infrastructure.Entities;
 
 namespace Contacts.Infrastructure
 {
@@ -9,6 +10,10 @@ namespace Contacts.Infrastructure
         public ContactsDbContext(DbContextOptions<ContactsDbContext> options) : base(options)
         {
 
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ContactEntityConfiguration());
         }
     }
 }
